@@ -33,19 +33,11 @@ const LoginScreen = ({ navigation }: { navigation: LoginNavigationProp }) => {
         defaultValues: { email: '', password: '' },
     });
 
-    if (loading) {
-        return (
-            <SafeAreaView style={styles.container}>
-                <ActivityIndicator size='large' color='#0000ff' />
-            </SafeAreaView>
-        );
-    }
-
     if (errorMessage) {
         return (
             <SafeAreaView style={styles.container}>
                 <Text style={{ color: isDarkMode ? '#ffffff' : '#121212' }}>{errorMessage}</Text>
-                <Button title='Go Back' onPress={() => navigation.popTo('Login')} />
+                <Button title='Go Back' onPress={() => navigation.goBack()} />
             </SafeAreaView>
         );
     }
@@ -108,8 +100,17 @@ const LoginScreen = ({ navigation }: { navigation: LoginNavigationProp }) => {
                 />
                 {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
 
+                {loading && (
+                    <SafeAreaView style={{ paddingVertical: 6 }}>
+                        <ActivityIndicator color='#0000ff' />
+                    </SafeAreaView>
+                )}
+
                 {/* Submit Button */}
-                <Button title='Login' onPress={handleSubmit(onSubmit)} />
+                <Button
+                    title={loading ? 'Loading ...' : 'Login'}
+                    onPress={handleSubmit(onSubmit)}
+                />
             </View>
 
             {/* Forgot Password */}

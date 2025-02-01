@@ -9,12 +9,10 @@ const AuthContext = createContext<AuthContextType>({
     isAuthenticated: false,
     login: () => {},
     errorMessage: null,
-    authToken: '',
+    authToken: null,
     loading: true,
     user: null,
     logout: () => {},
-    // intendedRoute: null,
-    // setIntendedRoute: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -22,8 +20,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [authToken, setAuthToken] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null); // Store user info
-    const [intendedRoute, setIntendedRoute] = useState();
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -48,22 +45,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const handleSuccessfulLogin = async (data: any, navigation: LoginNavigationProp) => {
-        // Alert.alert('Login Successful', `Welcome back, ${data.user.email}!`);
         await AsyncStorage.setItem('authToken', data.token);
         setAuthToken(`Bearer ${data.token}`);
         setIsAuthenticated(true);
         setLoading(false);
         setUser(data.user);
-
-        if (intendedRoute) {
-            // navigation.reset({
-            //     index: 0,
-            //     routes: [{ name: intendedRoute.name, params: intendedRoute.params }],
-            // });
-            // setIntendedRoute(null);
-        } else {
-            navigation.navigate('Main');
-        }
     };
 
     const login = async (
@@ -97,17 +83,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <AuthContext.Provider
-            value={{
-                isAuthenticated,
-                login,
-                errorMessage,
-                authToken,
-                loading,
-                user,
-                logout,
-                // intendedRoute,
-                // setIntendedRoute,
-            }}
+            value={{ isAuthenticated, login, errorMessage, authToken, loading, user, logout }}
         >
             {children}
         </AuthContext.Provider>

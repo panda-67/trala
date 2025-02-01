@@ -9,9 +9,9 @@ export type StackParamList = {
 };
 
 export type TabParamList = {
-    Home: undefined;
+    HomeScreen: undefined;
     Explore: undefined;
-    Profile: undefined;
+    ProfileScreen: undefined;
 };
 
 export type LoginNavigationProp = StackNavigationProp<StackParamList, 'Login'>;
@@ -19,8 +19,8 @@ export type SignupNavigationProp = StackNavigationProp<StackParamList, 'Signup'>
 export type MainNavigationProp = StackNavigationProp<StackParamList, 'Main'>;
 export type DetailNavigationProp = StackNavigationProp<StackParamList, 'Detail'>;
 
-export type HomeNavigationProp = BottomTabNavigationProp<TabParamList, 'Home'>;
+export type HomeNavigationProp = BottomTabNavigationProp<TabParamList, 'HomeScreen'>;
 export type ExploreNavigationProp = BottomTabNavigationProp<TabParamList, 'Explore'>;
-export type ProfileNavigationProp = BottomTabNavigationProp<TabParamList, 'Profile'>;
+export type ProfileNavigationProp = BottomTabNavigationProp<TabParamList, 'ProfileScreen'>;
 
 export type RouteParamList = StackParamList | TabParamList;

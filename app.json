@@ -1,30 +1,39 @@
 {
-  "expo": {
-    "name": "trala",
-    "slug": "trala",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.trala"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.anonymous.trala"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "expo": {
+        "name": "trala",
+        "slug": "trala",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "newArchEnabled": true,
+        "plugins": [
+            [
+                "expo-splash-screen",
+                {
+                    "backgroundColor": "#232323",
+                    "image": "./assets/splash-icon.png",
+                    "dark": {
+                        "image": "./assets/icon",
+                        "backgroundColor": "#000000"
+                    },
+                    "imageWidth": 200
+                }
+            ]
+        ],
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.anonymous.trala"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.anonymous.trala"
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        }
     }
-  }
 }
