@@ -5,6 +5,7 @@ import React from 'react';
 import { useColorScheme } from 'react-native';
 import AppRoute from './src/navigation/AppRoute';
 import { AuthProvider } from './src/provider/AuthProvider';
+import './style/global.css';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
